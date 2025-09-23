@@ -1,0 +1,16 @@
+<div class="usuarios-container">
+    <button class="create-user" matButton (click)="openDialog()">Create User</button>
+
+    @for (usuario of usuariosList; track $index) {
+    <div class="usuarios-content">
+        <div>
+            <button class="btn-delete" (click)="delete(usuario.id)">Delete</button>
+            <button class="btn-edit" (click)="openDialogEditUser(usuario, usuario.id)">Edit</button>
+        </div>
+        <p class="user-info"><span>Nome: </span>{{usuario.nome}}</p>
+        <p class="user-info"><span>Email: </span>{{usuario.email}}</p>
+
+        <button class="viewer-posts" matButton (click)="openDialogPosts(usuario.id, usuario.nome)">Acessar posts..</button>
+    </div>
+    }
+</div>

@@ -1,0 +1,64 @@
+.usuarios-container {
+    .create-user {
+        height: 35px;
+        background-color: transparent;
+        border: 1px solid rgb(9, 105, 0);
+    }
+
+    .usuarios-content {
+        margin-top: 20px;
+        border: 1px solid rgb(3, 131, 148);
+        box-shadow: 2px 2px 1px #bebdbd;
+        width: 33%;
+        padding: 10px;
+
+        p {
+            margin: 0;
+        }
+
+        .user-info {
+            span {
+                font-weight: 500;
+            }
+        }
+
+        div {
+            .btn-delete {
+                margin: 8px 0;
+                background-color: transparent;
+                border: 1px solid rgb(104, 2, 2);
+
+                &:hover{
+                    cursor: pointer;
+                    background-color: rgb(226, 200, 200);
+                }
+            }
+
+            .btn-edit{
+                margin: 8px;
+                background-color: transparent;
+                border: 1px solid rgb(15, 112, 168);
+
+                &:hover{
+                    cursor: pointer;
+                    background-color: rgb(195, 228, 247);
+                }
+            }
+        }
+
+        .viewer-posts {
+            margin-top: 10px;
+            background-color: rgb(224, 244, 247);
+            border: none;
+            border-radius: 5px;
+            padding: 5px 8px;
+            cursor: pointer;
+            transition: all .7s ease-in;
+
+            &:hover {
+                border: 1px solid #02386b;
+                transition: border 1s ease;
+            }
+        }
+    }
+}
