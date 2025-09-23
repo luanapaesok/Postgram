@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Create User</h2>
+<mat-dialog-content>
+    <form [formGroup]="formUser" (ngSubmit)="onSubmit()">
+        <label for="nome">Nome:
+            <input id="nome" type="text" formControlName="nome" placeholder="Digite o nome.."/> 
+        </label>
+
+        <label for="nome">E-mail:
+            <input id="email" type="email" formControlName="email" placeholder="Digite o e-mail.."/> 
+        </label>
+        <button matButton mat-dialog-close type="submit" [disabled]="!formUser.valid">Create</button>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+</mat-dialog-actions>
