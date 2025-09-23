@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Visualizar Posts</h1>
+<mat-dialog-content>
+    <button class="btn-open-dialog-create-post" matButton (click)="openDialogCreatePost(data.id)">Add new post</button>
+
+    <div class="post-container">
+        @if (postsList.length > 0) {
+            <h2>Posts</h2>
+            @for (post of postsList; track $index) {
+                <div class="post-content">
+                    <p class="title">{{post.title}}</p>
+                    <p>{{post.description}}</p>
+                </div>
+            }
+        } @else {
+            <p>O usuário {{data.nome}} não possui posts.</p>
+        }
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+</mat-dialog-actions>
