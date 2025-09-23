@@ -37,3 +37,11 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+  @include mat.snack-bar-overrides((
+    container-color: rgb(235, 238, 247),
+    supporting-text-color: #000000,
+    supporting-text-line-height: 50px
+  ));
+}
