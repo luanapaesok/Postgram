@@ -12,6 +12,7 @@ import { UsuariosService } from '../../services/usuarios.service';
 import { CreatePostDialog } from '../create-post-dialog/create-post-dialog';
 import { CustomPost } from '../../interfaces/custom-post.interface';
 import { PostService } from '../../services/post.service';
+import { EditPostDialog } from '../edit-post-dialog/edit-post-dialog';
 
 @Component({
   selector: 'app-posts-viewer.component',
@@ -62,5 +63,26 @@ export class PostsViewerComponent implements OnInit {
       },
       error: (e) => console.log("Post não encontrado.")
     });
+  }
+
+  openDialogEditPost(post: CustomPost, id: number) {
+    console.log("Post:", post, "--", "ID:", id)
+    const dialogRef = this.dialog.open(EditPostDialog, {
+      data: {post}
+    });
+
+    dialogRef.afterClosed().subscribe({
+      next: (postUpdated) => {
+        const i = this.postsList.findIndex(post => post.id === postUpdated.id);
+       
+        // atualiza o objeto do array que está naquele indice
+        this.postsList[i] = {
+          id: postUpdated.id,
+          title: postUpdated.title,
+          description: postUpdated.description,
+          usuarioID: post.usuarioID
+        }
+      }
+    })
   }
 }
