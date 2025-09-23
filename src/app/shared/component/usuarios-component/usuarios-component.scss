@@ -1,4 +1,11 @@
 .usuarios-container {
+    .usuarios {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2%;
+    }
+
     .create-user {
         height: 35px;
         background-color: transparent;
@@ -9,7 +16,8 @@
         margin-top: 20px;
         border: 1px solid rgb(3, 131, 148);
         box-shadow: 2px 2px 1px #bebdbd;
-        width: 33%;
+        width: 30%;
+        min-width: 30%;
         padding: 10px;
 
         p {
@@ -28,18 +36,18 @@
                 background-color: transparent;
                 border: 1px solid rgb(104, 2, 2);
 
-                &:hover{
+                &:hover {
                     cursor: pointer;
                     background-color: rgb(226, 200, 200);
                 }
             }
 
-            .btn-edit{
+            .btn-edit {
                 margin: 8px;
                 background-color: transparent;
                 border: 1px solid rgb(15, 112, 168);
 
-                &:hover{
+                &:hover {
                     cursor: pointer;
                     background-color: rgb(195, 228, 247);
                 }
@@ -53,11 +61,10 @@
             border-radius: 5px;
             padding: 5px 8px;
             cursor: pointer;
-            transition: all .7s ease-in;
+            transition: all .5s ease-in;
 
             &:hover {
-                border: 1px solid #02386b;
-                transition: border 1s ease;
+                background-color: rgb(190, 207, 209);
             }
         }
     }
