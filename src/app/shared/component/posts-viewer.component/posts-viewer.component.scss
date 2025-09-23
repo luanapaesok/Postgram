@@ -5,7 +5,6 @@ h1 {
 }
 
 .btn-open-dialog-create-post {
-
     width: 50%;
     height: 28px;
     background-color: transparent;
@@ -19,16 +18,50 @@ h1 {
 }
 
 .post-container {
-    .post-content {
-        margin: 10px 0;
+    .post-content-main {
+        border-left: 1px solid rgb(192, 191, 191);
+        padding: 4px;
+        margin-bottom: 5px;
 
-        p {
-            margin: 0;
+        .btn {
+            margin-bottom: 8px;
+
+            .btn-delete {
+                background-color: transparent;
+                border: 1px solid rgb(104, 2, 2);
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: rgb(226, 200, 200);
+                }
+            }
+
+            .btn-edit {
+                margin-left: 8px;
+                background-color: transparent;
+                border: 1px solid rgb(15, 112, 168);
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: rgb(195, 228, 247);
+                }
+            }
         }
 
-        .title {
-            font-weight: 600;
-            text-transform: uppercase;
+        .post-content {
+
+            p {
+                margin: 0;
+            }
+
+            .title {
+                font-weight: 600;
+                text-transform: uppercase;
+            }
         }
     }
+}
+
+.posts-viewer {
+    width: 350px;
 }
