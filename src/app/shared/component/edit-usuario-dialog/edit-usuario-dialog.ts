@@ -8,7 +8,7 @@ import { customUpdateUsuario } from '../../interfaces/custom-update-usuario.inte
 
 @Component({
   selector: 'app-edit-usuario-dialog',
-  imports: [MatDialogActions, MatDialogContent, ReactiveFormsModule],
+  imports: [MatDialogContent, ReactiveFormsModule],
   templateUrl: './edit-usuario-dialog.html',
   styleUrl: './edit-usuario-dialog.scss'
 })
