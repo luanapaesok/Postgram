@@ -13,4 +13,8 @@ export class PostService {
     console.log(post)
     return this.htppClient.post<CustomPost>(this.urlAPI, post)
   }
+
+  delete(id: number){
+    return this.htppClient.delete(`${this.urlAPI}/${id}`);
+  }
 }
