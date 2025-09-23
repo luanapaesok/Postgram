@@ -8,6 +8,7 @@ import {
 } from '@angular/material/dialog';
 import { UsuariosService } from '../../services/usuarios.service';
 import { CustomUsuario } from '../../interfaces/custom-usuario.interface';
+import { SnackBar } from '../../services/snack-bar.service';
 
 @Component({
   selector: 'app-create-dialog-usuario-component',
@@ -18,6 +19,7 @@ import { CustomUsuario } from '../../interfaces/custom-usuario.interface';
 export class CreateDialogUsuarioComponent implements OnInit{
   formUser!: FormGroup;
   usuarioService = inject(UsuariosService);
+  snackBarService = inject(SnackBar)
 
   constructor(
     private dialogRef: MatDialogRef<CreateDialogUsuarioComponent>,
@@ -40,6 +42,7 @@ export class CreateDialogUsuarioComponent implements OnInit{
       this.usuarioService.create(newUser).subscribe({
         next: (usuarioCriado) => {
           this.dialogRef.close(usuarioCriado)
+          this.snackBarService.openSnackBar("Usuário criado com sucesso!")
         }, 
         error: (err) => console.error('Erro ao criar usuário', err)
       })

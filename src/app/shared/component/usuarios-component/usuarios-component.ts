@@ -7,6 +7,7 @@ import { PostsViewerComponent } from '../posts-viewer.component/posts-viewer.com
 import { switchMap } from 'rxjs';
 import { CustomUsuario } from '../../interfaces/custom-usuario.interface';
 import { EditUsuarioDialog } from '../edit-usuario-dialog/edit-usuario-dialog';
+import { SnackBar } from '../../services/snack-bar.service';
 
 @Component({
   selector: 'app-usuarios-component',
@@ -18,6 +19,7 @@ export class UsuariosComponent implements OnInit {
   usuarioService = inject(UsuariosService);
   usuariosList: Usuario[] = [];
   readonly dialog = inject(MatDialog);
+  snackBarService = inject(SnackBar)
 
   ngOnInit(): void {
     this.get();
@@ -59,6 +61,8 @@ export class UsuariosComponent implements OnInit {
         if (indice > -1) {
           this.usuariosList.splice(indice, 1);
         }
+
+        this.snackBarService.openSnackBar("Usuário deletado com sucesso!")
       },
       error: (e) => console.log("Usuário não encontrado.")
     });

@@ -5,6 +5,8 @@ import { MAT_DIALOG_DATA, MatDialogActions, MatDialogContent, MatDialogRef } fro
 import { EditUsuarioDialog } from '../edit-usuario-dialog/edit-usuario-dialog';
 import { CustomUpdatePost } from '../../interfaces/custom-update-post.interface';
 import { PostService } from '../../services/post.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBar } from '../../services/snack-bar.service';
 
 @Component({
   selector: 'app-edit-post-dialog',
@@ -15,6 +17,7 @@ import { PostService } from '../../services/post.service';
 export class EditPostDialog implements OnInit {
   editPostForm!: FormGroup;
   postService = inject(PostService)
+  snackBarService = inject(SnackBar)
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { post: CustomUpdatePost },
@@ -39,6 +42,7 @@ export class EditPostDialog implements OnInit {
       this.postService.update(updatePost).subscribe({
         next: () => {
           this.dialogRef.close(updatePost)
+          this.snackBarService.openSnackBar("Post alterado com sucesso!")
         },
         error: (err) => console.error('Erro ao editar post', err)
       })

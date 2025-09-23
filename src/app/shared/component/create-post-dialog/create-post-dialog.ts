@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MAT_DIALOG_DATA, MatDialogContent, MatDialogRef } from '@angular/material/dialog';
 import { CustomPost } from '../../interfaces/custom-post.interface';
 import { PostService } from '../../services/post.service';
+import { SnackBar } from '../../services/snack-bar.service';
 
 @Component({
   selector: 'app-create-post-dialog',
@@ -15,6 +16,8 @@ export class CreatePostDialog {
     @Inject(MAT_DIALOG_DATA) public data: {idUser: number},
     private dialogRef: MatDialogRef<CreatePostDialog>
   ) { }
+
+  snackBarService = inject(SnackBar)
   postsService = inject(PostService)
   formPost!: FormGroup;
 
@@ -36,6 +39,7 @@ export class CreatePostDialog {
         this.postsService.create(newPost).subscribe({
           next: (postCriado) => {
             this.dialogRef.close(postCriado)
+            this.snackBarService.openSnackBar("Post criado com sucesso!");
           }, 
           error: (err) => console.error('Erro ao criar post', err)
         })

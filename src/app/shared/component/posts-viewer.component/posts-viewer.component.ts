@@ -4,8 +4,6 @@ import {
   MatDialog,
   MatDialogActions,
   MatDialogContent,
-  MatDialogRef,
-
 } from '@angular/material/dialog';
 import { Post } from '../../interfaces/post';
 import { UsuariosService } from '../../services/usuarios.service';
@@ -13,6 +11,7 @@ import { CreatePostDialog } from '../create-post-dialog/create-post-dialog';
 import { CustomPost } from '../../interfaces/custom-post.interface';
 import { PostService } from '../../services/post.service';
 import { EditPostDialog } from '../edit-post-dialog/edit-post-dialog';
+import { SnackBar } from '../../services/snack-bar.service';
 
 @Component({
   selector: 'app-posts-viewer.component',
@@ -26,6 +25,7 @@ export class PostsViewerComponent implements OnInit {
   usuariosService = inject(UsuariosService);
   postService = inject(PostService)
   postsList: Post[] = []
+  snackBarService = inject(SnackBar)
 
   ngOnInit(): void {
     this.getPosts();
@@ -60,6 +60,8 @@ export class PostsViewerComponent implements OnInit {
         if (indice > -1) {
           this.postsList.splice(indice, 1);
         }
+
+        this.snackBarService.openSnackBar("Post deletado com sucesso!")
       },
       error: (e) => console.log("Post não encontrado.")
     });

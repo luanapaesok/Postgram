@@ -5,6 +5,9 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatDialogActions, MatDialogContent } from '@angular/material/dialog';
 import { UsuariosService } from '../../services/usuarios.service';
 import { customUpdateUsuario } from '../../interfaces/custom-update-usuario.interface';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarMessage } from '../snack-bar-message/snack-bar-message';
+import { SnackBar } from '../../services/snack-bar.service';
 
 @Component({
   selector: 'app-edit-usuario-dialog',
@@ -17,6 +20,8 @@ export class EditUsuarioDialog {
     @Inject(MAT_DIALOG_DATA) public data: { user: CustomUsuario, userID: number },
     private dialogRef: MatDialogRef<EditUsuarioDialog>
   ) { }
+
+  snackBarService = inject(SnackBar)
   usuarioService = inject(UsuariosService)
   formEditUser!: FormGroup;
 
@@ -38,6 +43,7 @@ export class EditUsuarioDialog {
       this.usuarioService.update(updateUser).subscribe({
         next: () => {
           this.dialogRef.close(updateUser)
+          this.snackBarService.openSnackBar("Usuário editado com sucesso")
         }, 
         error: (err) => console.error('Erro ao criar usuário', err)
       })
