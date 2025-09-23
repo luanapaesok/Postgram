@@ -1,0 +1,31 @@
+h2 {
+    padding: 20px;
+    margin: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        display: flex;
+        flex-direction: column;
+        color: rgb(0, 4, 36);
+        margin-bottom: 8px;
+
+        input {
+            outline: none;
+            height: 20px;
+            padding: 5px;
+        }
+    }
+
+    button {
+        width: 50%;
+        height: 28px;
+        margin: 0 auto;
+        margin-top: 10px;
+        background-color: transparent;
+        border: 1px solid rgb(14, 128, 14);
+    }
+}
