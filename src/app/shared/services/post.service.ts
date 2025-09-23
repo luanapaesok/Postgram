@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { CustomPost } from '../interfaces/custom-post.interface';
+import { CustomUpdatePost } from '../interfaces/custom-update-post.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +17,9 @@ export class PostService {
 
   delete(id: number){
     return this.htppClient.delete(`${this.urlAPI}/${id}`);
+  }
+
+  update(post: CustomUpdatePost){
+    return this.htppClient.patch(`${this.urlAPI}/${post.id}`, post)
   }
 }
