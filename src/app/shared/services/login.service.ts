@@ -1,6 +1,5 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { Router } from "@angular/router";
 import { Observable, tap } from "rxjs";
 
 @Injectable({
@@ -9,7 +8,6 @@ import { Observable, tap } from "rxjs";
 export class LoginService {
   readonly urlAPI = "http://localhost:3000/auth/login";
   httpClient = inject(HttpClient);
-  router = inject(Router)
 
   isBrowser(): boolean {
     return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
