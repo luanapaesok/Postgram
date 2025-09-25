@@ -16,7 +16,7 @@ import { SnackBar } from '../../services/snack-bar.service';
   templateUrl: './create-dialog-usuario-component.html',
   styleUrl: './create-dialog-usuario-component.scss'
 })
-export class CreateDialogUsuarioComponent implements OnInit{
+export class CreateDialogUsuarioComponent implements OnInit {
   formUser!: FormGroup;
   usuarioService = inject(UsuariosService);
   snackBarService = inject(SnackBar)
@@ -43,11 +43,14 @@ export class CreateDialogUsuarioComponent implements OnInit{
         next: (usuarioCriado) => {
           this.dialogRef.close(usuarioCriado)
           this.snackBarService.openSnackBar("Usuário criado com sucesso!")
-        }, 
-        error: (err) => console.error('Erro ao criar usuário', err)
+        },
+        error: (err) => {
+          this.dialogRef.close()
+          this.snackBarService.openSnackBar(err.error.message)
+        }
       })
     } else {
-      console.log('Form is invalid.');
+      this.snackBarService.openSnackBar("Informe nome e e-mail.")
     }
   }
 }

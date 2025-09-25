@@ -34,6 +34,7 @@ export class EditUsuarioDialog {
 
   onSubmit() {
     if (this.formEditUser.valid) {
+
       let updateUser: customUpdateUsuario = {
         nome: this.formEditUser.value.nome,
         email: this.formEditUser.value.email,
@@ -44,11 +45,15 @@ export class EditUsuarioDialog {
         next: () => {
           this.dialogRef.close(updateUser)
           this.snackBarService.openSnackBar("Usuário editado com sucesso")
-        }, 
-        error: (err) => console.error('Erro ao criar usuário', err)
+        },
+        error: (e) => {
+          this.dialogRef.close()
+          this.snackBarService.openSnackBar(e.error.message)
+        }
       })
     } else {
-      console.log('Form is invalid.');
+      this.snackBarService.openSnackBar("Informe nome e e-mail.")
+
     }
   }
 }
