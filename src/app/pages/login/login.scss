@@ -1,0 +1,45 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(7, 54, 7);
+
+    padding: 20px;
+
+    label {
+        display: flex;
+        flex-direction: column;
+        color: rgb(0, 4, 36);
+        margin-bottom: 8px;
+        width: 100%;
+
+        input {
+            outline: none;
+            height: 20px;
+            padding: 5px;
+            width: 300px;
+        }
+    }
+
+    button {
+        height: 28px;
+        margin: 0 auto;
+        margin-top: 10px;
+        background-color: transparent;
+        border: 1px solid rgb(14, 128, 14);
+        cursor: pointer;
+
+        &:disabled{
+            border: 1px solid rgb(156, 155, 155);
+        }
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}

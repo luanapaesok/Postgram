@@ -1,0 +1,14 @@
+<main>
+    <h1>Faça Login</h1>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <label for="email">E-mail:
+            <input id="email" type="text" formControlName="email" placeholder="Digite seu email" />
+        </label>
+
+        <label for="password">Senha:
+            <input id="password" type="password" formControlName="password" placeholder="Digite sua senha" />
+        </label>
+        <button matButton mat-dialog-close type="submit" [disabled]="!loginForm.valid">Entrar</button>
+    </form>
+</main>
