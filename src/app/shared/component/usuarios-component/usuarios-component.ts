@@ -39,7 +39,7 @@ export class UsuariosComponent implements OnInit {
     dialogRef.afterClosed().subscribe((novoUsuario) => {
       if (novoUsuario) {
         //pega o objeto enviado pelo dialog e adiciona à nova lista
-        this.usuariosList.push(novoUsuario);
+        this.usuariosList.push(novoUsuario[0]);
       }
     });
   }
