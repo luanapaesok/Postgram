@@ -7,8 +7,8 @@ import {
 
 } from '@angular/material/dialog';
 import { UsuariosService } from '../../services/usuarios.service';
-import { CustomUsuario } from '../../interfaces/custom-usuario.interface';
 import { SnackBar } from '../../services/snack-bar.service';
+import { CreateUsuario } from '../../interfaces/create-usuario.interface';
 
 @Component({
   selector: 'app-create-dialog-usuario-component',
@@ -29,14 +29,16 @@ export class CreateDialogUsuarioComponent implements OnInit {
     this.formUser = new FormGroup({
       nome: new FormControl('', Validators.required), // FormControl with initial value and validator
       email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
   }
 
   onSubmit() {
     if (this.formUser.valid) {
-      let newUser: CustomUsuario = {
+      let newUser: CreateUsuario = {
         nome: this.formUser.value.nome,
-        email: this.formUser.value.email
+        email: this.formUser.value.email,
+        password: this.formUser.value.password
       }
 
       this.usuarioService.create(newUser).subscribe({
