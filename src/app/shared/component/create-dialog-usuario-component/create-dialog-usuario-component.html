@@ -5,8 +5,12 @@
             <input id="nome" type="text" formControlName="nome" placeholder="Digite o nome.."/> 
         </label>
 
-        <label for="nome">E-mail:
+        <label for="email">E-mail:
             <input id="email" type="email" formControlName="email" placeholder="Digite o e-mail.."/> 
+        </label>
+
+        <label for="password">Senha:
+            <input id="password" type="password" formControlName="password" placeholder="Digite a senha"/> 
         </label>
         <button matButton mat-dialog-close type="submit" [disabled]="!formUser.valid">Create</button>
     </form>
