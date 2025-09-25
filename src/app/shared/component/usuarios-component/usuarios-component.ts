@@ -75,15 +75,16 @@ export class UsuariosComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe({
       next: (userUpdated) => {
-        // pega o indice
-        const i = this.usuariosList.findIndex(user => user.id === userUpdated.id);
-       
-        // atualiza o objeto do array que está naquele indice
-        this.usuariosList[i] = {
-          email: userUpdated.email,
-          id: userUpdated.id,
-          nome: userUpdated.nome,
-          posts: userUpdated.posts
+        if (userUpdated) {
+          // pega o indice
+          const i = this.usuariosList.findIndex(userH => userH.id == userID);
+          // atualiza o objeto do array que está naquele indice
+          this.usuariosList[i] = {
+            email: userUpdated.email,
+            id: userUpdated.id,
+            nome: userUpdated.nome,
+            posts: userUpdated.posts
+          }
         }
       }
     });
